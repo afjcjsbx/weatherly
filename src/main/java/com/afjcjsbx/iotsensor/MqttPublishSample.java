@@ -39,7 +39,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MqttPublishSample {
 
-    //static String clientId = "sensor-" + UUID.randomUUID().toString();
     private static String clientId;
     private static String lat;
     private static String lon;
@@ -48,7 +47,7 @@ public class MqttPublishSample {
     private static String certPath;
     private static String keyPath;
     private static String endpoint;
-    private static String topic = "hello/world/pubsub";
+    private static String topic;
     private static boolean showHelp = false;
 
     // Configuration parameters
@@ -68,11 +67,11 @@ public class MqttPublishSample {
                         "  --clientId    Client ID to use when connecting (optional)\n" +
                         "  --lat Weather locality latitude in coordinates\n" +
                         "  --lon Weather locality longitude in coordinates\n" +
-                        "  -a|--amazonendpoint AWS IoT service endpoint hostname\n" +
                         "  -e|--endpoint AWS Greengrass Core endpoint hostname\n" +
                         "  -r|--rootca   Path to the root certificate\n" +
                         "  -c|--cert     Path to the IoT thing certificate\n" +
-                        "  -k|--key      Path to the IoT thing private key\n"
+                        "  -k|--key      Path to the IoT thing private key\n" +
+                        "  -t|--topic    topic to subscribe\n"
         );
     }
 
@@ -101,6 +100,12 @@ public class MqttPublishSample {
                 case "--endpoint":
                     if (idx + 1 < args.length) {
                         endpoint = args[++idx];
+                    }
+                    break;
+                case "-t":
+                case "--topic":
+                    if (idx + 1 < args.length) {
+                        topic = args[++idx];
                     }
                     break;
                 case "-r":
@@ -135,11 +140,6 @@ public class MqttPublishSample {
             return;
         }
 
-        String serverUrl = "ssl://192.168.1.41:8883";
-        //String caFilePath = "src/main/resources/certs/core-root-ca-cert.pem";
-        //String clientCrtFilePath = "src/main/resources/certs/cc77579c44.cert.pem";
-        //String clientKeyFilePath = "src/main/resources/certs/cc77579c44.private.key";
-
         if (endpoint == null) {
             throw new MqttException("must provide a valid endpoint");
         } else if (lat == null || lon == null) {
@@ -159,14 +159,11 @@ public class MqttPublishSample {
 
                 MqttClient client = new MqttClient(serverUrl, clientId);
                 MqttConnectOptions options = new MqttConnectOptions();
-                //options.setUserName(mqttUserName);
-                //options.setPassword(mqttPassword.toCharArray());
                 client.setCallback(new SimpleMqttCallBack());
 
                 options.setConnectionTimeout(60);
                 options.setKeepAliveInterval(60);
                 options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
-
 
                 SSLSocketFactory socketFactory = getSocketFactory(rootCaPath,
                         certPath, keyPath, "");
@@ -301,7 +298,6 @@ public class MqttPublishSample {
     private String sendGet() throws Exception {
 
         URIBuilder b = new URIBuilder(API_URL);
-        //b.addParameter("zip", locality + ",it");
         b.addParameter("lat", lat);
         b.addParameter("lon", lon);
         b.addParameter("appid", API_KEY);

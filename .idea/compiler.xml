@@ -10,6 +10,8 @@
         <module name="iot-sensor-mqtt" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="iot-sensor-mqtt" target="" />
+    </bytecodeTargetLevel>
   </component>
 </project>
