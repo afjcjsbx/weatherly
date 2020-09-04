@@ -40,7 +40,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MqttPublishSample {
 
     //static String clientId = "sensor-" + UUID.randomUUID().toString();
-    private static String clientId = "HelloWorld_Publisher";
+    private static String clientId;
     private static String lat;
     private static String lon;
 
@@ -48,7 +48,6 @@ public class MqttPublishSample {
     private static String certPath;
     private static String keyPath;
     private static String endpoint;
-    private static String amazonendpoint;
     private static String topic = "hello/world/pubsub";
     private static boolean showHelp = false;
 
@@ -104,12 +103,6 @@ public class MqttPublishSample {
                         endpoint = args[++idx];
                     }
                     break;
-                case "-a":
-                case "--amazonendpoint":
-                    if (idx + 1 < args.length) {
-                        amazonendpoint = args[++idx];
-                    }
-                    break;
                 case "-r":
                 case "--rootca":
                     if (idx + 1 < args.length) {
@@ -147,7 +140,7 @@ public class MqttPublishSample {
         //String clientCrtFilePath = "src/main/resources/certs/cc77579c44.cert.pem";
         //String clientKeyFilePath = "src/main/resources/certs/cc77579c44.private.key";
 
-        if (endpoint == null && amazonendpoint == null) {
+        if (endpoint == null) {
             throw new MqttException("must provide a valid endpoint");
         } else if (lat == null || lon == null) {
             throw new MqttException("must provide a locality");
@@ -161,16 +154,10 @@ public class MqttPublishSample {
             throw new MqttException("invalid key");
         }
 
-        MqttClient client;
         while (true) {
             try {
 
-                if (endpoint == null) {
-                    client = new MqttClient(amazonendpoint, clientId);
-                } else {
-                    client = new MqttClient(serverUrl, clientId);
-                }
-
+                MqttClient client = new MqttClient(serverUrl, clientId);
                 MqttConnectOptions options = new MqttConnectOptions();
                 //options.setUserName(mqttUserName);
                 //options.setPassword(mqttPassword.toCharArray());
@@ -233,6 +220,7 @@ public class MqttPublishSample {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                Thread.sleep(5000);
             }
         }
     }
