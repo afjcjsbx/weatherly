@@ -1,7 +1,19 @@
 ## IoT Based Weather Monitoring System
 
 
+### Parameters (file const.go) ##
 
+| Parameter                 | Example       | Description   |	
+| :------------------------ |:-------------:| :-------------|
+| --clientId 	       |	"Queue"          |queue name 
+| --lat 	       |	"127.0.0.1"          |Weather locality latitude in coordinates
+| --lon          | 12345           |Weather locality longitude in coordinates
+| -e or --endpoint 	       |	10	            |Local fog node ip or AWS Greengrass Core endpoint hostname
+| -r or --rootca		       | 15	           | Path to the root certificate
+| -c or --cert  	        | 1         | Path to the IoT thing certificate
+| -k or --key         | 1             | Path to the IoT thing private key
+| -t or --topic          | /weather           | Topic to subscribe
+## TODOs ##
 
 ### Libs
 Python libs used in lambda function:
