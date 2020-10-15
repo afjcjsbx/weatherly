@@ -54,6 +54,8 @@ public class MqttPublishSample {
     private static final int qos = 0;
     private static final int SLEEP_TIME = 1000 * 60;
 
+    private static final int PORT = 8883;
+
     // Weather api
     private static final String API_KEY = "52cb6ac6b2056c8f84b92bffc187beac";
     private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather";
@@ -157,7 +159,7 @@ public class MqttPublishSample {
         while (true) {
             try {
 
-                MqttClient client = new MqttClient(serverUrl, clientId);
+                MqttClient client = new MqttClient("ssl://" + endpoint + ":" + PORT, clientId);
                 MqttConnectOptions options = new MqttConnectOptions();
                 client.setCallback(new SimpleMqttCallBack());
 

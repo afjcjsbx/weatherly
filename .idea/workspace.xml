@@ -25,12 +25,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43fc8408-20ae-422c-8bd2-475aafff070a" name="Default Changelist" comment="added script">
-      <change afterPath="$PROJECT_DIR$/.idea/iot-sensor-mqtt.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/iot-sensor-mqtt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/iot-sensor-mqtt.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld_Publisher-ssl1921681418883/.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloWorld_Subscriber-ssl192168198883/.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +133,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.afjcjsbx.iotsensor.MqttPublishSample" />
       <module name="iot-sensor-mqtt" />
-      <option name="PROGRAM_PARAMETERS" value="--endpoint 3.120.105.23 --lat 41.68 --lon 13.41 --rootca src/main/resources/certs/new/greengrassgroupCA.pem --cert src/main/resources/certs/weather-sensor-2-north/d30d4126ed.cert.pem --key src/main/resources/certs/weather-sensor-2-north/d30d4126ed.private.key --clientId weather-sensor-2-north" />
+      <option name="PROGRAM_PARAMETERS" value="--endpoint a1zo2xweonj1mw-ats.iot.eu-central-1.amazonaws.com --lat 41.68 --lon 13.41 --rootca src/main/resources/certs/new/greengrassgroupCA.pem --cert src/main/resources/certs/weather-sensor-2-north/d30d4126ed.cert.pem --key src/main/resources/certs/weather-sensor-2-north/d30d4126ed.private.key --clientId weather-sensor-2-north" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,6 +181,9 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />
+  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -216,10 +219,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="845" y="383" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1598986724957" />
-    <state x="125" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599229376928">
+    <state x="125" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599235466686">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="125" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1599229376928" />
+    <state x="125" y="58" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1599235466686" />
     <state x="733" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599158881019" />
     <state x="699" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597248242774">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -258,25 +261,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="713" y="225" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1598986847779" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599229177367">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1600080130894">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599229177367" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800/1280.0.1366.1024@0.0.1280.800" timestamp="1600080130894" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599231281621" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599158883816" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599229177366">
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1600080130892">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599229177366" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800/1280.0.1366.1024@0.0.1280.800" timestamp="1600080130892" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599231281620" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599158883816" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599229177366">
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1600080130891">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599229177366" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800/1280.0.1366.1024@0.0.1280.800" timestamp="1600080130891" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599231281619" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599158883816" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599229177367">
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1600080130892">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599229177367" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800/1280.0.1366.1024@0.0.1280.800" timestamp="1600080130892" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599231281621" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599158883816" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1597429577403">
       <screen x="0" y="0" width="1920" height="1040" />
