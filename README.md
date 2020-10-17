@@ -2,6 +2,14 @@
 ## IoT Weather Monitoring System with Fog Computing
 
 
+1. Setup fog node
+2. Install Greengrass on your fog node
+3. Install influxDB
+4. Install Grafana
+5. Deploy local lambda function on your fog node using Aws Greengrass Core Console
+6. Setup Devices (sensors)
+7. Run sensors on the same network of fog node
+
 ### To run a sensor:
 Build Jar from iot-sensor-mqtt module and run:
 ```
@@ -21,7 +29,11 @@ java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.i
 | -k or --key         | certs/d30d4126ed.private.key             | Path to the IoT device private key
 | -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | openweathermap.org private API key
 | -t or --topic          | /hello/world/pubsub           | Topic name to publish data
-## TODOs ##
+
+
+### Grafana ##
+1. To visualize wheather data connect to the fog node: http://fog-node-ip-address:3000 (make sure you have the 3000 port open)
+2. Import the dashboard.json in grafana folder
 
 ### Libs
 Python libs used in lambda function:
