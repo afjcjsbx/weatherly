@@ -13,12 +13,12 @@ java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.i
 | :------------------------ |:-------------:| :-------------|
 | --clientId 	       |	"weather-sensor-1-north"          | Client ID to use when connecting
 | -z or --zone 	       |	"Colosseum"          |Weather locality or fog node name 
-| --lat 	       |	"127.0.0.1"          |Weather locality latitude in coordinates
-| --lon          | 12345           |Weather locality longitude in coordinates
-| -e or --endpoint 	       |	10	            |Local fog node ip or AWS Greengrass Core endpoint hostname
-| -r or --rootca		       | 15	           | Path to the root certificate
-| -c or --cert  	        | 1         | Path to the IoT device certificate
-| -k or --key         | 1             | Path to the IoT device private key
+| --lat 	       |	41.89          |Weather locality latitude in coordinates
+| --lon          | 13.59           |Weather locality longitude in coordinates
+| -e or --endpoint 	       |	"127.0.0.1"	            |Local fog node ip or AWS Greengrass Core endpoint hostname
+| -r or --rootca		       | certs/root-ca-cert.pem	           | Path to the root certificate
+| -c or --cert  	        | /certs/d30d4126ed.cert.pem         | Path to the IoT device certificate
+| -k or --key         | certs/d30d4126ed.private.key             | Path to the IoT device private key
 | -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | Path to the IoT device private key
 | -t or --topic          | /hello/world/pubsub           | Topic name to publish data
 ## TODOs ##
