@@ -19,7 +19,7 @@ java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.i
 | -r or --rootca		       | certs/root-ca-cert.pem	           | Path to the root certificate
 | -c or --cert  	        | /certs/d30d4126ed.cert.pem         | Path to the IoT device certificate
 | -k or --key         | certs/d30d4126ed.private.key             | Path to the IoT device private key
-| -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | Path to the IoT device private key
+| -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | openweathermap.org private API key
 | -t or --topic          | /hello/world/pubsub           | Topic name to publish data
 ## TODOs ##
 
