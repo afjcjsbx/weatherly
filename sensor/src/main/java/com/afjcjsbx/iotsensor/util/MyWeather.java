@@ -10,6 +10,7 @@ import lombok.ToString;
 public class MyWeather {
 
     private final String sensor_name;
+    private final String zone;
     private final String locality_name;
     private final String country;
     private final float temp;

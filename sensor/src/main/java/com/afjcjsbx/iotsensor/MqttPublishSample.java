@@ -42,22 +42,25 @@ public class MqttPublishSample {
     private static String clientId;
     private static String lat;
     private static String lon;
+    private static String zone = "unassigned-zone";
 
     private static String rootCaPath;
     private static String certPath;
     private static String keyPath;
     private static String endpoint;
     private static String topic;
+    private static String apiKey;
+
     private static boolean showHelp = false;
 
     // Configuration parameters
     private static final int qos = 0;
-    private static final int SLEEP_TIME = 1000 * 60;
+    private static final int PUBLISH_DATA_TIME_INTERVAL = 1000 * 30; // 30 seconds
+    private static final int RETRY_RECONNECT_INTERVAL = 1000 * 30; // 30 seconds
 
     private static final int PORT = 8883;
 
     // Weather api
-    private static final String API_KEY = "52cb6ac6b2056c8f84b92bffc187beac";
     private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather";
 
     private final CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -67,12 +70,14 @@ public class MqttPublishSample {
                 "Usage:\n" +
                         "  --help        This message\n" +
                         "  --clientId    Client ID to use when connecting (optional)\n" +
+                        "  -z|--zone Weather locality or fog node \n" +
                         "  --lat Weather locality latitude in coordinates\n" +
                         "  --lon Weather locality longitude in coordinates\n" +
                         "  -e|--endpoint AWS Greengrass Core endpoint hostname\n" +
                         "  -r|--rootca   Path to the root certificate\n" +
                         "  -c|--cert     Path to the IoT thing certificate\n" +
                         "  -k|--key      Path to the IoT thing private key\n" +
+                        "  -apikey|--apikey      Openweather private api key\n" +
                         "  -t|--topic    topic to subscribe\n"
         );
     }
@@ -86,6 +91,12 @@ public class MqttPublishSample {
                 case "--clientId":
                     if (idx + 1 < args.length) {
                         clientId = args[++idx];
+                    }
+                    break;
+                case "-z":
+                case "--zone":
+                    if (idx + 1 < args.length) {
+                        zone = args[++idx];
                     }
                     break;
                 case "--lat":
@@ -126,6 +137,11 @@ public class MqttPublishSample {
                 case "--key":
                     if (idx + 1 < args.length) {
                         keyPath = args[++idx];
+                    }
+                case "-apikey":
+                case "--apikey":
+                    if (idx + 1 < args.length) {
+                        apiKey = args[++idx];
                     }
                     break;
                 default:
@@ -192,6 +208,7 @@ public class MqttPublishSample {
 
                         MyWeather weather = MyWeather.newBuilder()
                                 .sensor_name(clientId)
+                                .zone(zone)
                                 .locality_name(event.getName())
                                 .country(event.getSys().getCountry())
                                 .temp(event.getMain().getTemp())
@@ -210,7 +227,7 @@ public class MqttPublishSample {
                         mqttMessage.setQos(qos);
 
                         client.publish(topic, mqttMessage);
-                        Thread.sleep(SLEEP_TIME);
+                        Thread.sleep(PUBLISH_DATA_TIME_INTERVAL);
 
                     } finally {
                         obj.close();
@@ -221,7 +238,7 @@ public class MqttPublishSample {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                Thread.sleep(5000);
+                Thread.sleep(RETRY_RECONNECT_INTERVAL);
             }
         }
     }
@@ -304,7 +321,7 @@ public class MqttPublishSample {
         URIBuilder b = new URIBuilder(API_URL);
         b.addParameter("lat", lat);
         b.addParameter("lon", lon);
-        b.addParameter("appid", API_KEY);
+        b.addParameter("appid", apiKey);
 
         HttpGet request = new HttpGet(b.build());
         // add request headers
