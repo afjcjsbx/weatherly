@@ -2,19 +2,25 @@
 ## IoT Weather Monitoring System with Fog Computing
 
 
-
-### Parameters (file const.go) ##
+### To run a sensor:
+Build Jar from iot-sensor-mqtt module and run:
+```
+java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.iotsensor.MqttPublishSample
+```
+### Arguments ##
 
 | Parameter                 | Example       | Description   |	
 | :------------------------ |:-------------:| :-------------|
-| --clientId 	       |	"Queue"          |queue name 
+| --clientId 	       |	"weather-sensor-1-north"          | Client ID to use when connecting
+| -z or --zone 	       |	"Colosseum"          |Weather locality or fog node name 
 | --lat 	       |	"127.0.0.1"          |Weather locality latitude in coordinates
 | --lon          | 12345           |Weather locality longitude in coordinates
 | -e or --endpoint 	       |	10	            |Local fog node ip or AWS Greengrass Core endpoint hostname
 | -r or --rootca		       | 15	           | Path to the root certificate
-| -c or --cert  	        | 1         | Path to the IoT thing certificate
-| -k or --key         | 1             | Path to the IoT thing private key
-| -t or --topic          | /weather           | Topic to subscribe
+| -c or --cert  	        | 1         | Path to the IoT device certificate
+| -k or --key         | 1             | Path to the IoT device private key
+| -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | Path to the IoT device private key
+| -t or --topic          | /hello/world/pubsub           | Topic name to publish data
 ## TODOs ##
 
 ### Libs
