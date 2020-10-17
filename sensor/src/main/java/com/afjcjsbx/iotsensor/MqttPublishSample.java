@@ -88,6 +88,7 @@ public class MqttPublishSample {
                 case "--help":
                     showHelp = true;
                     break;
+                case "-id":
                 case "--clientId":
                     if (idx + 1 < args.length) {
                         clientId = args[++idx];
@@ -138,6 +139,7 @@ public class MqttPublishSample {
                     if (idx + 1 < args.length) {
                         keyPath = args[++idx];
                     }
+                    break;
                 case "-apikey":
                 case "--apikey":
                     if (idx + 1 < args.length) {
