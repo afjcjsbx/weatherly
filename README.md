@@ -36,6 +36,11 @@ java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.i
 2. Import the dashboard.json in grafana folder
 
 ### Libs
+Java libs used in sensor:
+- [PApache HttpComponents](https://hc.apache.org/)
+- [Project Lombok](https://projectlombok.org/)
+- [gson](https://github.com/google/gson)
+
 Python libs used in lambda function:
 - [influxdb-python](https://github.com/influxdata/influxdb-python)
 - [requests](https://github.com/psf/requests)
