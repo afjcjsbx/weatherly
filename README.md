@@ -1,4 +1,6 @@
-## IoT Based Weather Monitoring System
+# Weatherly
+## IoT Weather Monitoring System with Fog Computing
+
 
 
 ### Parameters (file const.go) ##
