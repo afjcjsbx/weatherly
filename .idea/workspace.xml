@@ -22,59 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="added dashboard">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_moshi_moshi_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_logging_interceptor_4_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_4_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_2_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_converter_moshi_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_retrofit2_retrofit_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_moquette_moquette_broker_0_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_moquette_moquette_netty_parser_0_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_moquette_moquette_parser_commons_0_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_http_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_0_33_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hdrhistogram_HdrHistogram_2_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_influxdb_influxdb_java_2_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_13_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_3_72.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_3_70.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapdb_mapdb_1_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_msgpack_msgpack_core_0_8_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/moquette_broker_0_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/Sensor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/NodeKeeper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/NodeObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/ObserverPatternDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/SingletonSubjects.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/Subject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/interfaces/AttachNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/interfaces/CheckNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/interfaces/FindBestNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/interfaces/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/listener/AttachNodeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/listener/CheckNodeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/listener/FindBestNodeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/util/StringUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/resources/config/moquette.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IoT Sensor MQTT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IoT Sensor MQTT.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/iot-sensor-mqtt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/iot-sensor-mqtt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/MqttSubscribeSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/FogNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/target/classes/com/afjcjsbx/iotsensor/MqttSubscribeSample.class" beforeDir="false" />
-    </list>
+    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="fog application" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -269,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602960801577</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fog application">
+      <created>1603219035134</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603219035134</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,7 +242,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final commit" />
     <MESSAGE value="added dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dashboard" />
+    <MESSAGE value="fog application" />
+    <option name="LAST_COMMIT_MESSAGE" value="fog application" />
   </component>
   <component name="WindowStateProjectService">
     <state x="727" y="344" key="#Notifications" timestamp="1602784674593">
@@ -342,10 +298,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1603209592540" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602960809086">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1603219041350">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602960809086" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603219041350" />
     <state x="510" y="256" width="899" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1603195642482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
