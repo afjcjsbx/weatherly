@@ -2,9 +2,24 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="Eclipse Paho Repo" />
+      <option name="name" value="Eclipse Paho Repo" />
+      <option name="url" value="https://repo.eclipse.org/content/repositories/paho-releases/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="bintray" />
+      <option name="name" value="bintray" />
+      <option name="url" value="http://dl.bintray.com/andsel/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="bintray" />
+      <option name="name" value="bintray" />
+      <option name="url" value="https://jcenter.bintray.com" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
