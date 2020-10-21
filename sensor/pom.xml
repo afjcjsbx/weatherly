@@ -44,6 +44,12 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
 
+                    <archive>
+                        <manifest>
+                            <mainClass>com.afjcjsbx.iotsensor.TestSensors</mainClass>
+                        </manifest>
+                    </archive>
+
                 </configuration>
 
                 <executions>
@@ -55,6 +61,10 @@
                         </goals>
                     </execution>
                 </executions>
+
+
+
+
 
             </plugin>
 

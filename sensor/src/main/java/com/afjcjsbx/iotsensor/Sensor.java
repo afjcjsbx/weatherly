@@ -11,32 +11,17 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.openssl.PEMDecryptorProvider;
-import org.bouncycastle.openssl.PEMEncryptedKeyPair;
-import org.bouncycastle.openssl.PEMKeyPair;
-import org.bouncycastle.openssl.PEMParser;
-import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
-import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManagerFactory;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.security.KeyPair;
-import java.security.KeyStore;
-import java.security.Security;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.UnknownHostException;
 
 
 public class Sensor {
@@ -46,9 +31,11 @@ public class Sensor {
     private static String lon;
     private static String zone = "unassigned-zone";
 
-    private static String endpoint;
     private static String topic;
     private static String apiKey;
+
+    private static String rmiAddress;
+    private static String rmiPort;
 
     private static boolean showHelp = false;
 
@@ -57,13 +44,21 @@ public class Sensor {
     private static final int PUBLISH_DATA_TIME_INTERVAL = 1000 * 30; // 30 seconds
     private static final int RETRY_RECONNECT_INTERVAL = 1000 * 30; // 30 seconds
 
-    private static final int PORT = 8883;
-
     private static String bestNode;
 
-
     public Sensor() {
+    }
+
+    public Sensor(String zone, double lat, double lon, String endpoint,
+                  int port, String topic, String apikey) {
         clientId = StringUtils.getAlphaNumericString(32);
+        this.zone = zone;
+        this.lat = String.valueOf(lat);
+        this.lon = String.valueOf(lon);
+        rmiAddress = endpoint;
+        this.rmiPort = String.valueOf(port);
+        this.topic = topic;
+        this.apiKey = apikey;
     }
 
     // Weather api
@@ -80,12 +75,13 @@ public class Sensor {
                         "  --lat Weather locality latitude in coordinates\n" +
                         "  --lon Weather locality longitude in coordinates\n" +
                         "  -e|--endpoint NoodeKeeper endpoint hostname\n" +
+                        "  -p|--port NoodeKeeper endpoint port\n" +
                         "  -apikey|--apikey      Openweather private api key\n" +
                         "  -t|--topic    topic to subscribe\n"
         );
     }
 
-    static void parseCommandLine(String[] args) {
+    private static void parseCommandLine(String[] args) {
         for (int idx = 0; idx < args.length; ++idx) {
             switch (args[idx]) {
                 case "--help":
@@ -116,7 +112,13 @@ public class Sensor {
                 case "-e":
                 case "--endpoint":
                     if (idx + 1 < args.length) {
-                        endpoint = args[++idx];
+                        rmiAddress = args[++idx];
+                    }
+                    break;
+                case "-p":
+                case "--port":
+                    if (idx + 1 < args.length) {
+                        rmiPort = args[++idx];
                     }
                     break;
                 case "-t":
@@ -141,7 +143,14 @@ public class Sensor {
     public static void main(String[] args) throws Exception {
 
         Sensor sensor = new Sensor();
-        sensor.init(args);
+
+        parseCommandLine(args);
+        if (showHelp) {
+            printUsage();
+            return;
+        }
+
+        sensor.init();
 
     }
 
@@ -150,16 +159,12 @@ public class Sensor {
     }
 
 
-    private void init(String[] args) throws InterruptedException {
+    public void init() throws InterruptedException {
 
-        parseCommandLine(args);
-        if (showHelp) {
-            printUsage();
-            return;
-        }
-
-        if (endpoint == null) {
-            throw new MqttException("must provide a valid endpoint");
+        if (rmiAddress == null) {
+            throw new NodeException("must provide a valid endpoint address");
+        } else if (rmiPort == null) {
+            throw new NodeException("must provide a valid endpoint port");
         } else if (lat == null || lon == null) {
             throw new MqttException("must provide a locality");
         } else if (clientId == null) {
@@ -171,37 +176,36 @@ public class Sensor {
 
             try {
                 // lookup method to find reference of remote object
-                FindBestNode access = (FindBestNode) Naming.lookup("rmi://localhost:1900/findBestNode");
+                FindBestNode access = (FindBestNode) Naming.lookup("rmi://" + rmiAddress + ":" + rmiPort + "/findBestNode");
                 bestNode = access.findBestNode();
                 System.err.println("Sensor attached to:" + bestNode);
-            } // end try
-            catch (Exception e) {
+            } catch (RemoteException e) {
                 System.err.println("EchoRMIClient exception: ");
+                e.printStackTrace();
+            } catch (NotBoundException | MalformedURLException e) {
                 e.printStackTrace();
             }
 
 
             try {
-
                 //MqttClient client = new MqttClient("tcp://" + endpoint + ":" + PORT, clientId, new MemoryPersistence());
                 MqttClient client = new MqttClient("tcp://" + bestNode, clientId, new MemoryPersistence());
                 MqttConnectOptions options = new MqttConnectOptions();
                 client.setCallback(new SimpleMqttCallBack());
 
-                options.setConnectionTimeout(60);
-                options.setKeepAliveInterval(60);
+                //options.setConnectionTimeout(60);
+                options.setKeepAliveInterval(25);
                 options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
 
                 System.out.println("starting connect the server...");
                 client.connect(options);
-                System.out.println("connected!");
+                System.out.println("connected to: " + bestNode);
 
 
-                while (true) {
-                    Sensor obj = new Sensor();
+                //while (true) {
 
-                    try {
-                        String message = obj.sendGet();
+                    //try {
+                        String message = sendGet();
                         /**
                          * Read JSON from a file into a Map
                          */
@@ -232,11 +236,11 @@ public class Sensor {
                         client.publish(topic, mqttMessage);
                         Thread.sleep(PUBLISH_DATA_TIME_INTERVAL);
 
-                    } finally {
-                        obj.close();
-                    }
+                    //} finally {
+                        //close();
+                    //}
 
-                }
+                //}
 
 
             } catch (Exception e) {

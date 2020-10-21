@@ -18,7 +18,7 @@ public class FindBestNodeImpl extends UnicastRemoteObject implements FindBestNod
 
 
     @Override
-    public String findBestNode() throws InterruptedException {
+    public synchronized String findBestNode() throws InterruptedException {
         List<Node> nodes = SingletonSubjects.getInstance().subject.getNodes();
         if (nodes.size() == 0) {
             throw new MqttException("No fog nodes available");

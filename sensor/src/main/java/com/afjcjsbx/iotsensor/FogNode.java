@@ -3,6 +3,7 @@ package com.afjcjsbx.iotsensor;
 import com.afjcjsbx.iotsensor.nodekeeper.interfaces.AttachNode;
 import com.afjcjsbx.iotsensor.nodekeeper.interfaces.CheckNode;
 import com.afjcjsbx.iotsensor.util.MyWeather;
+import com.afjcjsbx.iotsensor.util.NodeException;
 import com.afjcjsbx.iotsensor.util.StringUtils;
 import com.google.gson.Gson;
 import io.moquette.interception.AbstractInterceptHandler;
@@ -11,13 +12,16 @@ import io.moquette.interception.messages.InterceptPublishMessage;
 import io.moquette.server.Server;
 import io.moquette.server.config.ClasspathConfig;
 import io.moquette.server.config.IConfig;
+import io.moquette.server.config.MemoryConfig;
 import org.influxdb.BatchOptions;
 import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
+import org.influxdb.InfluxDBIOException;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -33,6 +37,10 @@ public class FogNode {
     private String nodeId;
     private String address;
     private int port;
+
+    private String rmiAddress;
+    private String rmiPort;
+
     private InfluxDB influxDB;
 
 
@@ -41,11 +49,28 @@ public class FogNode {
         this.port = port;
         this.nodeId = StringUtils.getAlphaNumericString(32);
 
-        // lookup method to find reference of remote object
-        AttachNode access = (AttachNode) Naming.lookup("rmi://localhost:1900/attachNode");
+        rmiAddress = System.getenv("RMI_ADDRESS");
+        if (rmiAddress == null) {
+            throw new NodeException("Environment variable RMI_ADDRESS not set");
+        }
 
-        boolean response = access.addNode(nodeId, address, port);
+        rmiPort = System.getenv("RMI_PORT");
+        if (rmiPort == null) {
+            throw new NodeException("Environment variable RMI_PORT not set");
+        }
 
+        System.err.println("Fog node ready on " + address + ":" + port);
+
+        try {
+            // lookup method to find reference of remote object
+            AttachNode access = (AttachNode) Naming.lookup("rmi://" + rmiAddress + ":" + rmiPort +
+                    "/attachNode");
+
+            boolean response = access.addNode(nodeId, address, port);
+        } catch (NotBoundException | RemoteException e) {
+            System.err.println("Exception in RMI invoke");
+            e.printStackTrace();
+        }
 
         TimerTask timerTask = new HearthbeatTask();
         //running timer task as daemon thread
@@ -62,30 +87,45 @@ public class FogNode {
             String payload = new String(message.getPayload().array());
             Gson gson = new Gson();
             MyWeather event = gson.fromJson(payload, MyWeather.class);
+
             insertInDb(event);
         }
     }
 
 
-    private void initInfluxDb() {
-        // Create an object to handle the communication with InfluxDB.
-        // (best practice tip: reuse the 'influxDB' instance when possible)
-        final String serverURL = "http://127.0.0.1:8086", username = "root", password = "root";
-        influxDB = InfluxDBFactory.connect(serverURL, username, password);
+    private boolean initInfluxDb() {
 
-        // Create a database...
-        String databaseName = "home";
-        influxDB.query(new Query("CREATE DATABASE " + databaseName));
-        influxDB.setDatabase(databaseName);
+        String influxdbAddress = System.getenv("INFLUXDB_ADDRESS");
+        if (influxdbAddress == null) {
+            throw new NodeException("Environment variable INFLUXDB_ADDRESS not set");
+        }
 
-        // ... and a retention policy, if necessary.
-        String retentionPolicyName = "one_day_only";
-        influxDB.query(new Query("CREATE RETENTION POLICY " + retentionPolicyName
-                + " ON " + databaseName + " DURATION 1d REPLICATION 1 DEFAULT"));
-        influxDB.setRetentionPolicy(retentionPolicyName);
+        try {
+            // Create an object to handle the communication with InfluxDB.
+            // (best practice tip: reuse the 'influxDB' instance when possible)
+            final String serverURL = "http://" + influxdbAddress + ":8086", username = "root", password = "root";
+            influxDB = InfluxDBFactory.connect(serverURL, username, password);
 
-        // Enable batch writes to get better performance.
-        influxDB.enableBatch(BatchOptions.DEFAULTS);
+            // Create a database...
+            String databaseName = "home";
+            influxDB.query(new Query("CREATE DATABASE " + databaseName));
+            influxDB.setDatabase(databaseName);
+
+            // ... and a retention policy, if necessary.
+            String retentionPolicyName = "one_day_only";
+            influxDB.query(new Query("CREATE RETENTION POLICY " + retentionPolicyName
+                    + " ON " + databaseName + " DURATION 1d REPLICATION 1 DEFAULT"));
+            influxDB.setRetentionPolicy(retentionPolicyName);
+
+            // Enable batch writes to get better performance.
+            influxDB.enableBatch(BatchOptions.DEFAULTS);
+
+            return true;
+        }catch (InfluxDBIOException e){
+            System.err.println("Exception in influxDB connection");
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
@@ -122,7 +162,7 @@ public class FogNode {
 
         private void completeTask() {
             try {
-                CheckNode access = (CheckNode) Naming.lookup("rmi://localhost:1900/sendHearthbeat");
+                CheckNode access = (CheckNode) Naming.lookup("rmi://" + rmiAddress + ":" + rmiPort + "/sendHearthbeat");
                 try {
                     access.sendPing(nodeId);
                 } catch (InterruptedException e) {
@@ -138,12 +178,21 @@ public class FogNode {
 
     public static void main(String[] args) throws IOException {
 
-        String address = "127.0.0.1";
-        int port = 8883;
+
+        String address = System.getenv("ADDRESS");
+        if (address == null) {
+            throw new NodeException("Environment variable ADDRESS not set");
+        }
+
+        String port = System.getenv("PORT");
+        if (port == null) {
+            throw new NodeException("Environment variable PORT not set");
+        }
+
 
         FogNode fogNode;
         try {
-            fogNode = new FogNode(address, port);
+            fogNode = new FogNode(address, Integer.parseInt(port));
             fogNode.init();
 
         } catch (NotBoundException | InterruptedException e) {
@@ -154,15 +203,23 @@ public class FogNode {
     }
 
 
-    private void init() throws IOException {
+    private void init() throws IOException, InterruptedException {
         // Initialize influxDB
-        initInfluxDb();
+
+        while(!initInfluxDb()){
+            TimeUnit.SECONDS.sleep(3);
+        }
+
         // Creating a MQTT Broker using Moquette
-        final IConfig classPathConfig = new ClasspathConfig();
+        //final IConfig classPathConfig = new ClasspathConfig();
+
+        MemoryConfig config = new MemoryConfig(new Properties());
+        config.setProperty("host", address);
+        config.setProperty("port", Integer.toString(port));
 
         final Server mqttBroker = new Server();
         final List<? extends InterceptHandler> userHandlers = Collections.singletonList(new PublisherListener());
-        mqttBroker.startServer(classPathConfig, userHandlers);
+        mqttBroker.startServer(config, userHandlers);
 
         System.out.println("moquette mqtt broker started, press ctrl-c to shutdown..");
         Runtime.getRuntime().addShutdownHook(new Thread() {

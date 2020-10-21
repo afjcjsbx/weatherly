@@ -26,6 +26,7 @@ def function_handler(event, context):
             "fields": {
                 "sensor_name": event['sensor_name'],
                 "locality_name":  event['locality_name'],
+                "zone":  event['zone'],
                 "country": event['country'],
                 "temp": event['temp'],
                 "pressure":  event['pressure'],

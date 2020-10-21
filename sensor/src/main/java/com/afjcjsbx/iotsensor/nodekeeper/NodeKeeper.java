@@ -12,6 +12,7 @@ import com.afjcjsbx.iotsensor.nodekeeper.listener.AttachNodeImpl;
 import com.afjcjsbx.iotsensor.nodekeeper.listener.CheckNodeImpl;
 import com.afjcjsbx.iotsensor.nodekeeper.listener.FindBestNodeImpl;
 import com.afjcjsbx.iotsensor.util.MqttException;
+import com.afjcjsbx.iotsensor.util.NodeException;
 
 public class NodeKeeper extends UnicastRemoteObject {
 
@@ -28,24 +29,33 @@ public class NodeKeeper extends UnicastRemoteObject {
 
         try {
 
+            String address = System.getenv("ADDRESS");
+            if(address == null){
+                throw new NodeException("Environment variable ADDRESS not set");
+            }
+
+            String port = System.getenv("PORT");
+            if(port == null){
+                throw new NodeException("Environment variable PORT not set");
+            }
             // rmiregistry within the server JVM with
             // port number 1900
-            LocateRegistry.createRegistry(1900);
+            LocateRegistry.createRegistry(Integer.parseInt(port));
             AttachNode serverOperation = new AttachNodeImpl();
             FindBestNode findBestNodeOperation = new FindBestNodeImpl();
             CheckNode sendHearthbeatOperation = new CheckNodeImpl();
 
             // Binds the remote object by the name
-            Naming.rebind("rmi://localhost:1900"+
+            Naming.rebind("rmi://" + address + ":" + port +
                     "/attachNode", serverOperation);
 
-            Naming.rebind("rmi://localhost:1900"+
+            Naming.rebind("rmi://" + address + ":" + port +
                     "/findBestNode", findBestNodeOperation);
 
-            Naming.rebind("rmi://localhost:1900"+
+            Naming.rebind("rmi://" + address + ":" + port +
                     "/sendHearthbeat", sendHearthbeatOperation);
 
-            System.err.println("Server ready");
+            System.err.println("Server ready on " + address + ":" + port);
 
             while (true) {
                 try {

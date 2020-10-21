@@ -1,0 +1,91 @@
+version: '3.6'
+
+services:
+  nodekeeper:
+    image: nodekeeper:latest
+    hostname: nodekeeper
+    container_name: nodekeeper
+    environment:
+      - ADDRESS=nodekeeper
+      - PORT=1900
+    ports:
+      - 1900
+    networks:
+      - project_network
+    tty: true
+
+  fognode1:
+    image: fognode:latest
+    hostname: fognode1
+    container_name: fognode1
+    depends_on:
+      - influx1
+      - influx2
+    environment:
+      - RMI_ADDRESS=nodekeeper
+      - RMI_PORT=1900
+      - ADDRESS=fognode1
+      - PORT=8883
+      - INFLUXDB_ADDRESS=influx1
+
+    networks:
+      - project_network
+    tty: true
+
+
+  influx1:
+    image: influxdb:1.7-alpine
+    hostname: influx1
+    container_name: influx1
+    depends_on:
+      - nodekeeper
+    networks:
+      - project_network
+    tty: true
+
+
+  fognode2:
+    image: fognode:latest
+    hostname: fognode2
+    container_name: fognode2
+    depends_on:
+      - influx1
+      - influx2
+    environment:
+      - RMI_ADDRESS=nodekeeper
+      - RMI_PORT=1900
+      - ADDRESS=fognode2
+      - PORT=8883
+      - INFLUXDB_ADDRESS=influx2
+    networks:
+      - project_network
+    tty: true
+
+
+  influx2:
+    image: influxdb:1.7-alpine
+    hostname: influx2
+    container_name: influx2
+    depends_on:
+      - nodekeeper
+    networks:
+      - project_network
+    tty: true
+
+
+  sensors:
+    image: sensors:latest
+    hostname: sensors
+    container_name: sensors
+    depends_on:
+      - nodekeeper
+      - fognode1
+      - fognode2
+    networks:
+      - project_network
+    tty: true
+
+networks:
+  project_network:
+    name: project_network
+    driver: bridge

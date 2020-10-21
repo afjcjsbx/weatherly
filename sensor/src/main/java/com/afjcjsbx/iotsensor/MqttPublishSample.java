@@ -70,7 +70,7 @@ public class MqttPublishSample {
                 "Usage:\n" +
                         "  --help        This message\n" +
                         "  --clientId    Client ID to use when connecting (optional)\n" +
-                        "  -z|--zone Weather locality or fog node \n" +
+                        "  -z|--zone Weather locality or fog node name\n" +
                         "  --lat Weather locality latitude in coordinates\n" +
                         "  --lon Weather locality longitude in coordinates\n" +
                         "  -e|--endpoint AWS Greengrass Core endpoint hostname\n" +
