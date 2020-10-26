@@ -7,6 +7,9 @@ from datetime import datetime, timedelta
 import json
 import time
 
+INFLUXDB_HOST = '52.44.221.201'
+#INFLUXDB_HOST = 'localhost'
+
 class MachineLearning:
 	def __init__(self, city):
 		# body of the constructor
@@ -22,7 +25,7 @@ class MachineLearning:
 		print(start_time)
 
 
-		client = InfluxDBClient('localhost', 8086, 'afjcjsbx', 'admin', 'home')
+		client = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
 		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and time < now() + 60m  group by time(1m) fill(previous) order by time desc limit 30"
 		rs = client.query(query_measured)
 

@@ -19,8 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="new implementation">
-      <change afterPath="$PROJECT_DIR$/web/flask/requirements.txt" afterDir="false" />
+    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="requirements.txt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fog-node/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/fog-node/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fog-node/ml.py" beforeDir="false" afterPath="$PROJECT_DIR$/fog-node/ml.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/flask/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603735928821</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="requirements.txt">
+      <created>1603736212149</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603736212150</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -226,7 +236,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final commit" />
     <MESSAGE value="new implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="new implementation" />
+    <MESSAGE value="requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt" />
   </component>
   <component name="WindowStateProjectService">
     <state x="727" y="344" key="#Notifications" timestamp="1602784674593">
@@ -303,11 +314,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602784687897" />
-    <state x="414" y="219" key="Vcs.Push.Dialog.v2" timestamp="1603735942484">
+    <state x="414" y="219" key="Vcs.Push.Dialog.v2" timestamp="1603736225059">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="368" y="195" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1603296190338" />
-    <state x="414" y="219" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1603735942484" />
+    <state x="414" y="219" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1603736225059" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602788542967" />
     <state x="319" y="195" key="git4idea.merge.GitPullDialog" timestamp="1603296184237">
       <screen x="0" y="0" width="1280" height="800" />

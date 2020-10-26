@@ -7,6 +7,9 @@ from influxdb import InfluxDBClient
 from ml import MachineLearning
 from datetime import datetime
 
+INFLUXDB_HOST = '52.44.221.201'
+#INFLUXDB_HOST = 'localhost'
+
 city = "Rome"
 #city = os.getenv('CITY', 'Rome')
 
@@ -16,7 +19,7 @@ port = 1883
 topic = "weather/" + city
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
-client_influx = InfluxDBClient('localhost', 8086, 'afjcjsbx', 'admin', 'home')
+client_influx = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
 
 
 dataset = []

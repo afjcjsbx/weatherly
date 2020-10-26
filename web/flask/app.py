@@ -6,15 +6,20 @@ from datetime import datetime, timedelta
 import json
 from flask import jsonify
 
+INFLUXDB_HOST = '52.44.221.201'
+#INFLUXDB_HOST = 'localhost'
+
+
 app = Flask(__name__)
 # weekdays as a tuple
 weekDays = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
+
 
  
 @app.route('/')
 def home():
 
-    client = InfluxDBClient('localhost', 8086, 'afjcjsbx', 'admin', 'home')
+    client = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
     query_cities = "select distinct(city) as city from temperature;"
 
     rs = client.query(query_cities)
@@ -31,7 +36,7 @@ def weather_dashboard():
     city = request.args.get('city')
     #city = "Rome"
 
-    client = InfluxDBClient('localhost', 8086, 'afjcjsbx', 'admin', 'home')
+    client = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
     query_measured = "select mean(temperature) from temperature where city = '" + city + "' and type = 'measured' and time <= now() + 60m group by time(1m) fill(previous) order by time desc limit 50"
     query_predicted = "select * from temperature where city = '" + city + "' and type = 'predicted' order by time desc limit 50"
 
@@ -92,7 +97,7 @@ def weather_dashboard():
 
 
 def init_influxdb():
-    client = InfluxDBClient('localhost', 8086, 'afjcjsbx', 'admin', 'home')
+    client = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
     return client
 
 if __name__ == '__main__':
