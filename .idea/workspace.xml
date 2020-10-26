@@ -20,20 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="new implementation">
-      <change afterPath="$PROJECT_DIR$/fog-node/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fog-node/ml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/SensorPython.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/static/js/Chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/results.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/flask/templates/line_chart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/target/classes/com/afjcjsbx/iotsensor/MqttPublishSample.class" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/target/classes/com/afjcjsbx/iotsensor/MqttPublishSample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603296176386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new implementation">
+      <created>1603735928820</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603735928821</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -309,10 +303,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602784687897" />
-    <state x="368" y="195" key="Vcs.Push.Dialog.v2" timestamp="1603296190338">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="414" y="219" key="Vcs.Push.Dialog.v2" timestamp="1603735942484">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="368" y="195" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1603296190338" />
+    <state x="414" y="219" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1603735942484" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602788542967" />
     <state x="319" y="195" key="git4idea.merge.GitPullDialog" timestamp="1603296184237">
       <screen x="0" y="0" width="1280" height="800" />
