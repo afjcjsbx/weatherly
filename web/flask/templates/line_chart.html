@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <!--mobile-apps-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!--//mobile-apps-->
+  <!--Custom Theme files-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <!--//Custom Theme files -->
+  <!--web-font-->
+  <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+  <!--//web-font-->
+  <!--skycons-icons-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
+  <!--//skycons-icons-->
+</head>
+
+
+
+
+
+
+
+<body>
+  <!-- main -->
+  <div class="main">
+    <div class="main-info">
+      <div class="weather-top"> 
+        <div class="weather-grids">
+          <h3 class="fri">{{actual_day}} </h3>
+          <h3>Weather</h3>
+        </div>
+        <div class="weather-grids weather-mdl">
+          <canvas id="clear-day" width="70" height="70"></canvas>
+        </div>
+        <div class="weather-grids">
+          <h2>{{ actual_temp }}°C</h2>
+        </div>
+        <div class="clear"> </div>
+      </div>
+      <div class="weather-bottom">  
+        
+
+
+        <center>
+          <h1><font color="#ffffff">{{ title }}</font></h1>
+
+          <div class="container">
+              <div class="row">
+                  <div class="col-12">
+                      <div class="card">
+                          <div class="card-body">
+                              <canvas id="canvas"></canvas>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--suppress JSUnresolvedLibraryURL -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+          <!--suppress JSUnresolvedLibraryURL -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+          <!--suppress JSUnresolvedLibraryURL -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+          <script>
+          var s1 = {
+            label: 'measured',
+            borderColor: 'red',
+            fontColor: "white",
+            data: {{ data1|safe }},
+          };
+
+          var s2 = {
+            label: 'predicted',
+            borderColor: 'orange',
+            fontColor: "white",
+            data: {{ data2|safe }},
+
+          };
+
+ 
+
+              $(document).ready(function () {
+                  const config = {
+                      type: 'line',
+                      data: { datasets: [s1, s2] },
+                      options: {
+                          responsive: true,
+                          title: {
+                              display: true,
+                              text: ''
+                          },
+                          tooltips: {
+                              mode: 'index',
+                              intersect: false,
+                          },
+                          hover: {
+                              mode: 'nearest',
+                              intersect: true
+                          },
+                          scales: {
+                              xAxes: [{
+                                ticks: {
+                                  fontColor: "white",
+                                  fontSize: 14,
+                                },
+                                type: 'time',
+                                distribution: 'linear'
+                              }],
+                              yAxes: [{
+                                  ticks: {
+                                    fontColor: "white",
+                                    fontSize: 14,
+                                  },                                
+                                  display: true,
+                                  scaleLabel: {
+                                      display: true,
+                                      labelString: 'Temperature',
+                                      fontColor: "white"
+                                  }
+                              }]
+                          }
+                      }
+                  };
+
+                  const context = document.getElementById('canvas').getContext('2d');
+                  const lineChart = new Chart(context, config);
+              });
+          </script>
+           
+      </center>
+
+
+
+
+        <div class="clear"> </div>
+      </div>
+
+    </div>
+    <!--copyright-->
+    <div class="copyright">
+  
+    </div>
+    <!--//copyright-->
+  </div>  
+  <!--//main -->
+</body>
+</html>
+
+

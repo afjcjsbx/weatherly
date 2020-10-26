@@ -19,28 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="bugfix">
-      <change afterPath="$PROJECT_DIR$/scripts/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/fognode/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/nodekeeper/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/sensor/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/sensor/spawn_sensors.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start_fog_node.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start_nodekeeper.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start_sensor.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/TestSensors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/util/CoordinatesUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/util/NodeException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="new implementation">
+      <change afterPath="$PROJECT_DIR$/fog-node/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fog-node/ml.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/SensorPython.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/static/js/Chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/results.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/static/styles/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/flask/templates/line_chart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lambda-function/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/lambda-function/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/FogNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/FogNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/MqttPublishSample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/Sensor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/NodeKeeper.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/NodeKeeper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/listener/FindBestNodeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/nodekeeper/listener/FindBestNodeImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/resources/config/moquette.conf" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/resources/config/moquette.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sensor/target/classes/com/afjcjsbx/iotsensor/MqttPublishSample.class" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/target/classes/com/afjcjsbx/iotsensor/MqttPublishSample.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,24 +65,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts/sensor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scripts/nodekeeper/code" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.afjcjsbx.iotsensor.util" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web" />
+      <recent name="$PROJECT_DIR$/fog-node" />
       <recent name="$PROJECT_DIR$/scripts/sensor" />
       <recent name="$PROJECT_DIR$/scripts/nodekeeper" />
       <recent name="$PROJECT_DIR$/scripts/fognode" />
-      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.afjcjsbx.iotsensor" />
+      <recent name="com.afjcjsbx.iotsensor.util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts/nodekeeper/code" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -98,7 +93,7 @@
       <command value="mvn package" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.NodeKeeper">
+  <component name="RunManager" selected="Application.SensorPython">
     <configuration name="FogNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.afjcjsbx.iotsensor.FogNode" />
       <module name="iot-sensor-mqtt" />
@@ -115,6 +110,7 @@
     <configuration name="MqttPublishSample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.afjcjsbx.iotsensor.MqttPublishSample" />
       <module name="iot-sensor-mqtt" />
+      <option name="PROGRAM_PARAMETERS" value="--clientId sensor -z Rome --lat 42.12 --lon 13.12 -e broker.emqx.io -t weather --apikey 52cb6ac6b2056c8f84b92bffc187beac" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.afjcjsbx.iotsensor.*" />
@@ -146,6 +142,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SensorPython" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.afjcjsbx.iotsensor.SensorPython" />
+      <module name="iot-sensor-mqtt" />
+      <option name="PROGRAM_PARAMETERS" value="--clientId sensor -z Rome --lat 42.12 --lon 13.12 -e broker.emqx.io -t weather/Rome --apikey 52cb6ac6b2056c8f84b92bffc187beac" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestSensors" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.afjcjsbx.iotsensor.TestSensors" />
       <module name="iot-sensor-mqtt" />
@@ -157,15 +161,16 @@
     <list>
       <item itemvalue="Application.TestSensors" />
       <item itemvalue="Application.Sensor" />
+      <item itemvalue="Application.SensorPython" />
       <item itemvalue="Application.MqttPublishSample" />
       <item itemvalue="Application.NodeKeeper" />
       <item itemvalue="Application.FogNode" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MqttPublishSample" />
         <item itemvalue="Application.NodeKeeper" />
         <item itemvalue="Application.FogNode" />
-        <item itemvalue="Application.MqttPublishSample" />
       </list>
     </recent_temporary>
   </component>
@@ -202,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602788523510</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="new implementation">
+      <created>1603296176386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603296176386</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +231,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="final commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
+    <MESSAGE value="new implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="new implementation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="727" y="344" key="#Notifications" timestamp="1602784674593">
@@ -230,10 +243,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="290" y="19" key="#TestSensors/0.0.1280.800@0.0.1280.800" timestamp="1603234224798" />
-    <state x="209" y="124" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603281555166">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="235" y="140" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603732596459">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="209" y="124" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1603281555166" />
+    <state x="209" y="124" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1603536189415" />
+    <state x="235" y="140" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1603732596459" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602788361084" />
     <state x="320" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603220513403">
       <screen x="0" y="0" width="1280" height="800" />
@@ -243,54 +257,67 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1603281736759" />
-    <state x="482" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1603236857791">
+    <state x="482" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1603399611044">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="482" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.800@0.0.1280.800" timestamp="1603236857791" />
-    <state width="1238" height="315" key="GridCell.Tab.0.bottom" timestamp="1603285211145">
+    <state x="482" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.800@0.0.1280.800" timestamp="1603399611044" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1603732609590">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1603490769306" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603732609590" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.23.1280.724@0.23.1280.724" timestamp="1603539261267" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1603716594359" />
+    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1603732609585">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1603490769304" />
+    <state width="1398" height="239" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603732609585" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.23.1280.724@0.23.1280.724" timestamp="1603539261264" />
+    <state width="1398" height="239" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1603716594358" />
+    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1603732609584">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1603490769303" />
+    <state width="1398" height="239" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603732609584" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.23.1280.724@0.23.1280.724" timestamp="1603539261263" />
+    <state width="1398" height="239" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1603716594356" />
+    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1603732609587">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1603490769305" />
+    <state width="1398" height="239" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603732609587" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.23.1280.724@0.23.1280.724" timestamp="1603539261266" />
+    <state width="1398" height="239" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1603716594358" />
+    <state width="1238" height="545" key="GridCell.Tab.1.bottom" timestamp="1603317803024">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="315" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1603285211145" />
-    <state width="1238" height="315" key="GridCell.Tab.0.bottom/0.23.1280.724@0.23.1280.724" timestamp="1603236885840" />
-    <state width="1238" height="315" key="GridCell.Tab.0.center" timestamp="1603285211143">
+    <state width="1238" height="545" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1603317803024" />
+    <state width="1238" height="545" key="GridCell.Tab.1.center" timestamp="1603317803023">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="315" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1603285211143" />
-    <state width="1238" height="315" key="GridCell.Tab.0.center/0.23.1280.724@0.23.1280.724" timestamp="1603236885838" />
-    <state width="1238" height="315" key="GridCell.Tab.0.left" timestamp="1603285211142">
+    <state width="1238" height="545" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1603317803023" />
+    <state width="1238" height="545" key="GridCell.Tab.1.left" timestamp="1603317803022">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="315" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1603285211142" />
-    <state width="1238" height="315" key="GridCell.Tab.0.left/0.23.1280.724@0.23.1280.724" timestamp="1603236885837" />
-    <state width="1238" height="315" key="GridCell.Tab.0.right" timestamp="1603285211144">
+    <state width="1238" height="545" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1603317803022" />
+    <state width="1238" height="545" key="GridCell.Tab.1.right" timestamp="1603317803024">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="315" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1603285211144" />
-    <state width="1238" height="315" key="GridCell.Tab.0.right/0.23.1280.724@0.23.1280.724" timestamp="1603236885839" />
-    <state width="1238" height="545" key="GridCell.Tab.1.bottom" timestamp="1603221735222">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="545" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1603221735222" />
-    <state width="1238" height="545" key="GridCell.Tab.1.center" timestamp="1603221735221">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="545" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1603221735221" />
-    <state width="1238" height="545" key="GridCell.Tab.1.left" timestamp="1603221735219">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="545" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1603221735219" />
-    <state width="1238" height="545" key="GridCell.Tab.1.right" timestamp="1603221735222">
-      <screen x="0" y="0" width="1280" height="800" />
-    </state>
-    <state width="1238" height="545" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1603221735222" />
+    <state width="1238" height="545" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1603317803024" />
     <state x="440" y="94" key="SettingsEditor" timestamp="1602784687897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602784687897" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1602788542967">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="368" y="195" key="Vcs.Push.Dialog.v2" timestamp="1603296190338">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="368" y="195" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1603296190338" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602788542967" />
+    <state x="319" y="195" key="git4idea.merge.GitPullDialog" timestamp="1603296184237">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="319" y="195" key="git4idea.merge.GitPullDialog/0.0.1280.800@0.0.1280.800" timestamp="1603296184237" />
     <state x="586" y="180" key="new project wizard" timestamp="1602784686481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,56 +1,40 @@
 # Weatherly
-## IoT Weather Monitoring System with Fog Computing
+## Weather forecasting machine learning with IoT devices and fog computing
 
 
-1. Setup fog node
-2. Install Greengrass on your fog node
-3. Install influxDB
-4. Install Grafana
-5. Deploy local lambda function on your fog node using Aws Greengrass Core Console
-6. Setup Devices (sensors)
-7. Run sensors on the same network of fog node
+Weatherly is a distributed weather forecast application that uses Recurrent neural network(RNN) on fog nodes and iot sensors for temperature monitoring.
 
 ### To run a sensor:
 Build Jar from iot-sensor-mqtt module and run:
 ```
-java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.iotsensor.MqttPublishSample
+java -cp "iot-sensor-mqtt-1.0-SNAPSHOT-jar-with-dependencies.jar" com.afjcjsbx.iotsensor.SensorPython
 ```
 ### Arguments ##
 
 | Parameter                 | Example       | Description   |	
 | :------------------------ |:-------------:| :-------------|
-| --clientId 	       |	"weather-sensor-1-north"          | Client ID to use when connecting
-| -z or --zone 	       |	"Colosseum"          |Weather locality or fog node name 
+| --clientId 	       |	"weather-sensor-1-name"          | Client ID to use when connecting
 | --lat 	       |	41.89          |Weather locality latitude in coordinates
 | --lon          | 13.59           |Weather locality longitude in coordinates
-| -e or --endpoint 	       |	"127.0.0.1"	            |Local fog node ip or AWS Greengrass Core endpoint hostname
-| -r or --rootca		       | certs/root-ca-cert.pem	           | Path to the root certificate
-| -c or --cert  	        | /certs/d30d4126ed.cert.pem         | Path to the IoT device certificate
-| -k or --key         | certs/d30d4126ed.private.key             | Path to the IoT device private key
+| -e or --endpoint 	       |	"broker.emqx.io"	            |Local fog node ip or Mqtt cloud service
 | -apikey or --apikey         | 52cb6acs8ejvn42hc4b92bffc187beac             | openweathermap.org private API key
-| -t or --topic          | /hello/world/pubsub           | Topic name to publish data
+| -t or --topic          | /weather/Rome          | Topic name to publish data
 
 
-### Grafana ##
-1. To visualize wheather data connect to the fog node: http://fog-node-ip-address:3000 (make sure you have the 3000 port open)
-2. Import the dashboard.json in grafana folder
 
 ### Libs
 Java libs used in sensor:
-- [PApache HttpComponents](https://hc.apache.org/)
+- [Apache HttpComponents](https://hc.apache.org/)
 - [Project Lombok](https://projectlombok.org/)
 - [gson](https://github.com/google/gson)
 
-Python libs used in lambda function:
+Python libs used:
 - [influxdb-python](https://github.com/influxdata/influxdb-python)
-- [requests](https://github.com/psf/requests)
-- [MessagePack](https://github.com/msgpack/msgpack-python)
-- [pytz](https://pypi.org/project/pytz/)
-- [certifi](https://github.com/certifi/python-certifi)
-- [chardet](https://github.com/chardet/chardet)
-- [idna](https://pypi.org/project/idna/0.6/)
-- [boto3](https://github.com/boto/boto3)
-- [urllib3](https://github.com/urllib3/urllib3)
+- [numpy](https://numpy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [TensorFlow](https://www.tensorflow.org/)
+- [Keras](https://keras.io/)
+- [paho-mqtt](https://pypi.org/project/paho-mqtt/)
 
 
 ### Note
