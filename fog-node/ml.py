@@ -26,7 +26,7 @@ class MachineLearning:
 
 
 		client = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
-		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and time < now() + 60m  group by time(1m) fill(previous) order by time desc limit 30"
+		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and time < now() + 60m  group by time(1m) fill(previous) order by time desc limit 60"
 		rs = client.query(query_measured)
 
 		training_set = []
@@ -47,6 +47,8 @@ class MachineLearning:
 		# sc = StandardScaler()
 		training_set_scaled = sc.fit_transform(training_set)
 
+		#print("Training_set_scaled: {0}\n".format(training_set_scaled))
+
 
 		x_train = []
 		y_train = []
@@ -58,8 +60,6 @@ class MachineLearning:
 		x_train , y_train = np.array(x_train), np.array(y_train)
 		x_train = np.reshape(x_train, (x_train.shape[0] , x_train.shape[1], 1) )
 
-		#print(x_train)
-		#print(y_train)
 
 
 		from keras.models import Sequential
@@ -82,7 +82,7 @@ class MachineLearning:
 		regressor.fit(x_train, y_train, epochs=25, batch_size=1)
 
 
-		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and  time >= now() - 5m  group by time(1m) fill(previous) order by time desc limit 50"
+		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and  time <= now() + 55m group by time(1m) fill(previous) order by time desc limit 50"
 		rs = client.query(query_measured)
 
 		test_set = []

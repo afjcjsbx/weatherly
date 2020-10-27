@@ -7,6 +7,9 @@ from influxdb import InfluxDBClient
 from ml import MachineLearning
 from datetime import datetime
 
+EMQ_USERNAME = 'afjcjsbx'
+EMQ_PASSWORD = 'qwerty'
+
 INFLUXDB_HOST = '52.44.221.201'
 #INFLUXDB_HOST = 'localhost'
 
@@ -14,7 +17,8 @@ city = "Rome"
 #city = os.getenv('CITY', 'Rome')
 
 # broker mqtt endpoint
-broker = 'broker.emqx.io'
+#broker = 'broker.emqx.io'
+broker = '35.158.147.153'
 port = 1883
 topic = "weather/" + city
 # generate client ID with pub prefix randomly
@@ -34,6 +38,7 @@ def connect_mqtt() -> mqtt_client:
 
     client = mqtt_client.Client(client_id)
     client.on_connect = on_connect
+    client.username_pw_set(EMQ_USERNAME, EMQ_PASSWORD)
     client.connect(broker, port)
     return client
 

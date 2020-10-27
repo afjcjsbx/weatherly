@@ -4,3 +4,6 @@ flask
 influxdb
 datetime
 json
+sklearn
+keras
+tensorflow

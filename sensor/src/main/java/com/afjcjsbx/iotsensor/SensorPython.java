@@ -1,9 +1,6 @@
 package com.afjcjsbx.iotsensor;
 
-import com.afjcjsbx.iotsensor.util.MqttException;
-import com.afjcjsbx.iotsensor.util.MyWeather;
-import com.afjcjsbx.iotsensor.util.SimpleMqttCallBack;
-import com.afjcjsbx.iotsensor.util.WeatherObject;
+import com.afjcjsbx.iotsensor.util.*;
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -41,6 +38,9 @@ import java.security.cert.X509Certificate;
 
 public class SensorPython {
 
+    private static final String EMQ_USERNAME = "afjcjsbx";
+    private static final String EMQ_PASSWORD = "qwerty";
+
     private static String clientId;
     private static String lat;
     private static String lon;
@@ -50,6 +50,7 @@ public class SensorPython {
     private static String topic;
     private static String apiKey;
 
+
     private static boolean showHelp = false;
 
     // Configuration parameters
@@ -57,13 +58,25 @@ public class SensorPython {
     private static final int PUBLISH_DATA_TIME_INTERVAL = 1000 ; // 30 seconds
     private static final int RETRY_RECONNECT_INTERVAL = 1000 * 30; // 30 seconds
 
-    private static final int PORT = 8883;
     private static final int NEW_PORT = 1883;
 
     // Weather api
     private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather";
 
     private final CloseableHttpClient httpClient = HttpClients.createDefault();
+
+
+    public SensorPython(String zone, double lat, double lon, String endpoint, String topic, String apikey) {
+        clientId = StringUtils.getAlphaNumericString(32);
+        this.zone = zone;
+        this.lat = String.valueOf(lat);
+        this.lon = String.valueOf(lon);
+        this.endpoint = endpoint;
+        this.topic = topic;
+        this.apiKey = apikey;
+    }
+
+
 
     static void printUsage() {
         System.out.println(
@@ -142,6 +155,9 @@ public class SensorPython {
             return;
         }
 
+    }
+
+    public void init() throws InterruptedException {
         if (endpoint == null) {
             throw new MqttException("must provide a valid endpoint");
         } else if (lat == null || lon == null) {
@@ -156,24 +172,26 @@ public class SensorPython {
             try {
 
                 MqttClient client = new MqttClient("tcp://"+endpoint + ":" + NEW_PORT, clientId);
-                MqttConnectOptions options = new MqttConnectOptions();
+                MqttConnectOptions connOpts = new MqttConnectOptions();
+                connOpts.setCleanSession(true);
+                connOpts.setUserName(EMQ_USERNAME);
+                connOpts.setPassword(EMQ_PASSWORD.toCharArray());
                 client.setCallback(new SimpleMqttCallBack());
 
                 //options.setConnectionTimeout(60);
                 //options.setKeepAliveInterval(60);
-                options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
+                connOpts.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
 
 
                 System.out.println("starting connect the server...");
-                client.connect(options);
+                client.connect(connOpts);
                 System.out.println("connected!");
 
 
                 while (true) {
-                    SensorPython obj = new SensorPython();
 
                     try {
-                        String message = obj.sendGet();
+                        String message = sendGet();
                         /**
                          * Read JSON from a file into a Map
                          */
