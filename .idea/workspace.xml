@@ -22,12 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="final">
+      <change afterPath="$PROJECT_DIR$/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/SensorPython.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/SensorPython.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/TestSensors.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/TestSensors.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,25 +58,25 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/web" />
-      <recent name="$PROJECT_DIR$/fog-node" />
-      <recent name="$PROJECT_DIR$/scripts/sensor" />
-      <recent name="$PROJECT_DIR$/scripts/nodekeeper" />
-      <recent name="$PROJECT_DIR$/scripts/fognode" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts/nodekeeper/code" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.afjcjsbx.iotsensor" />
       <recent name="com.afjcjsbx.iotsensor.util" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/scripts/nodekeeper/code" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mauro\IdeaProjects\IoT Sensor MQTT" />
+      <recent name="$PROJECT_DIR$/web" />
+      <recent name="$PROJECT_DIR$/fog-node" />
+      <recent name="$PROJECT_DIR$/scripts/sensor" />
+      <recent name="$PROJECT_DIR$/scripts/nodekeeper" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -229,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603743839256</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="final">
+      <created>1603925720319</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603925720319</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -248,7 +252,8 @@
     <MESSAGE value="final commit" />
     <MESSAGE value="new implementation" />
     <MESSAGE value="requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="WindowStateProjectService">
     <state x="727" y="344" key="#Notifications" timestamp="1602784674593">
@@ -325,12 +330,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602784687897" />
-    <state x="414" y="219" key="Vcs.Push.Dialog.v2" timestamp="1603743847626">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1603925727457">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="368" y="195" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1603296190338" />
     <state x="414" y="219" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1603743847626" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602788542967" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603925727457" />
     <state x="319" y="195" key="git4idea.merge.GitPullDialog" timestamp="1603296184237">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
