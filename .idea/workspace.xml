@@ -19,16 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="final">
-      <change afterPath="$PROJECT_DIR$/docker/fog-node/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/fog-node/app/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/fog-node/app/src/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/fog-node/app/src/ml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/fog-node/build.sh" afterDir="false" />
+    <list default="true" id="3a805a6d-d1fe-4d3a-b3c4-ba114a36dea9" name="Default Changelist" comment="docker fog-node">
+      <change afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/fog-node/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fog-node/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/fog-node/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fog-node/ml.py" beforeDir="false" afterPath="$PROJECT_DIR$/fog-node/ml.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/TestSensors.java" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/src/main/java/com/afjcjsbx/iotsensor/TestSensors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/fog-node/app/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/fog-node/app/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/fog-node/app/src/ml.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker/fog-node/app/src/ml.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/flask/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,24 +59,25 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker/fog-node" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker" />
+      <recent name="$PROJECT_DIR$/docker/fog-node/app/src" />
       <recent name="$PROJECT_DIR$/docker/fog-node" />
       <recent name="$PROJECT_DIR$/web" />
       <recent name="$PROJECT_DIR$/fog-node" />
-      <recent name="$PROJECT_DIR$/scripts/sensor" />
-      <recent name="$PROJECT_DIR$/scripts/nodekeeper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.afjcjsbx.iotsensor" />
       <recent name="com.afjcjsbx.iotsensor.util" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/fog-node" />
       <recent name="$PROJECT_DIR$/docker/fog-node/app/src" />
       <recent name="$PROJECT_DIR$/docker/fog-node/app" />
       <recent name="$PROJECT_DIR$/scripts/nodekeeper/code" />
@@ -239,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603839183733</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="docker fog-node">
+      <created>1603900038046</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603900038046</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -259,7 +264,8 @@
     <MESSAGE value="new implementation" />
     <MESSAGE value="requirements.txt" />
     <MESSAGE value="final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final" />
+    <MESSAGE value="docker fog-node" />
+    <option name="LAST_COMMIT_MESSAGE" value="docker fog-node" />
   </component>
   <component name="WindowStateProjectService">
     <state x="727" y="344" key="#Notifications" timestamp="1602784674593">
@@ -288,32 +294,32 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="482" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.800@0.0.1280.800" timestamp="1603399611044" />
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1603899917975">
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom" timestamp="1603900947470">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1603490769306" />
-    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603899917975" />
+    <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603900947470" />
     <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.23.1280.724@0.23.1280.724" timestamp="1603539261267" />
     <state width="1398" height="239" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1603716594359" />
-    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1603899917974">
+    <state width="1398" height="239" key="GridCell.Tab.0.center" timestamp="1603900947465">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1603490769304" />
-    <state width="1398" height="239" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603899917974" />
+    <state width="1398" height="239" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603900947465" />
     <state width="1238" height="212" key="GridCell.Tab.0.center/0.23.1280.724@0.23.1280.724" timestamp="1603539261264" />
     <state width="1398" height="239" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1603716594358" />
-    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1603899917973">
+    <state width="1398" height="239" key="GridCell.Tab.0.left" timestamp="1603900947460">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1603490769303" />
-    <state width="1398" height="239" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603899917973" />
+    <state width="1398" height="239" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603900947460" />
     <state width="1238" height="212" key="GridCell.Tab.0.left/0.23.1280.724@0.23.1280.724" timestamp="1603539261263" />
     <state width="1398" height="239" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1603716594356" />
-    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1603899917974">
+    <state width="1398" height="239" key="GridCell.Tab.0.right" timestamp="1603900947468">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1603490769305" />
-    <state width="1398" height="239" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603899917974" />
+    <state width="1398" height="239" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603900947468" />
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.23.1280.724@0.23.1280.724" timestamp="1603539261266" />
     <state width="1398" height="239" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1603716594358" />
     <state width="1238" height="545" key="GridCell.Tab.1.bottom" timestamp="1603317803024">

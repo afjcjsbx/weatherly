@@ -18,10 +18,10 @@ class MachineLearning:
 		# datetime object containing current date and time
 		now = datetime.now()
 		start_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-		print(start_time)
+		print("Starting training: {0}".format(start_time))
 
 		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and time < now() + 60m  group by time(1m) fill(previous) order by time desc limit 60"
-		rs = client_influx.query(query_measured)
+		rs = self.client_influx.query(query_measured)
 
 		training_set = []
 		measurement = list(rs.get_points(measurement='temperature'))
@@ -30,8 +30,13 @@ class MachineLearning:
 			value.append(i['mean'])
 			training_set.append(value)
 
+
 		training_set.reverse()
 		print("Training set: {0}\n".format(training_set))
+
+		if training_set[-1][0] == None:
+		    print("no points to evaluate")
+		    return
 
 		#Feature Scaling 
 		from sklearn.preprocessing import MinMaxScaler
@@ -77,7 +82,7 @@ class MachineLearning:
 
 
 		query_measured = "select mean(temperature) from temperature where city = '" + self.city + "' and type != 'predicted' and  time <= now() + 55m group by time(1m) fill(previous) order by time desc limit 50"
-		rs = client_influx.query(query_measured)
+		rs = self.client_influx.query(query_measured)
 
 		test_set = []
 		measurement = list(rs.get_points(measurement='temperature'))
@@ -88,6 +93,10 @@ class MachineLearning:
 
 		test_set.reverse()
 		print("Test set: {0}\n".format(test_set))
+
+		if test_set[-1][0] == None:
+		    print("no test set")
+		    return
 
 		testing = sc.transform(test_set)
 		testing = np.array(testing)
@@ -118,7 +127,7 @@ class MachineLearning:
 				}
 			]
 			print("Scrivo punto: {0}\n".format(json_body))
-			client_influx.write_points(json_body)
+			self.client_influx.write_points(json_body)
 
 		print(predictions)
 

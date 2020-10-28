@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+
+    fog-node-1:
+        image: fog-node:latest
+        container_name: fog-node-1
+
+        restart: always
+        ports:
+            - "8086:8086"
+            - "1883:1883"
+        environment:
+            - CITY=Rome
+            - BROKER_ADDRESS=broker.emqx.io
+            - BROKER_PORT=1883
+            - BROKER_USERNAME=afjcjsbx
+            - BROKER_PASSWORD=qwerty
+            - INFLUXDB_ADDRESS=52.44.221.201
+            - INFLUXDB_PORT=8086
+            - INFLUXDB_DATABASE=home
+            - INFLUXDB_USERNAME=afjcjsbx
+            - INFLUXDB_PASSWORD=admin
