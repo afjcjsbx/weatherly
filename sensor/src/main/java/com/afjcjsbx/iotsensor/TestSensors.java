@@ -7,13 +7,14 @@ import java.util.Arrays;
 
 public class TestSensors {
 
-    public static void main(String[] args) {
+    public static String OPENWEATHER_API_KEY = "52cb6ac6b2056c8f84b92bffc187beac";
+    public static double LATITUDE_ROME = 41.90278;
+    public static double LONGITUDE_ROME = 12.49636;
+    public static double RADIUS_IN_METERS = 30000;
+    public static String BROKER_ENDPOINT = "35.158.147.153";
+    public static String TOPIC_NAME = "weather/Rome";
 
-        String[] arguments = "--clientId sensor -z Rome --lat 42.12 --lon 13.12 -e 35.158.147.153 -t weather/Rome --apikey 52cb6ac6b2056c8f84b92bffc187beac".split(" ");
-        String OPENWEATHER_API_KEY = "52cb6ac6b2056c8f84b92bffc187beac";
-        double LATITUDE_ROME = 41.90278;
-        double LONGITUDE_ROME = 12.49636;
-        double RADIUS_IN_METERS = 30000;
+    public static void main(String[] args) {
 
         int num = 1;
         for(int i = 0; i < num; i++ ){
@@ -25,10 +26,8 @@ public class TestSensors {
                         CoordinatesUtils.Location randomLocation = CoordinatesUtils.getLocationInLatLngRad(RADIUS_IN_METERS, currentLocation);
 
                         System.out.println(randomLocation);
-                        SensorPython sensor = new SensorPython("Rome", randomLocation.getLatitude(),
-                                randomLocation.getLongitude(), "35.158.147.153", "weather/Rome", OPENWEATHER_API_KEY);
-                                //randomLocation.getLongitude(), "broker.emqx.io", "weather/Rome", OPENWEATHER_API_KEY);
-                                //randomLocation.getLongitude(), "localhost", "weather/Rome", OPENWEATHER_API_KEY);
+                        SensorPython sensor = new SensorPython(randomLocation.getLatitude(),
+                                randomLocation.getLongitude(), BROKER_ENDPOINT, TOPIC_NAME, OPENWEATHER_API_KEY);
                                 sensor.init();
                     } catch (InterruptedException e) {
                         e.printStackTrace();

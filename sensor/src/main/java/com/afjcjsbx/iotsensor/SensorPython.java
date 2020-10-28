@@ -70,9 +70,8 @@ public class SensorPython {
     private final CloseableHttpClient httpClient = HttpClients.createDefault();
 
 
-    public SensorPython(String zone, double lat, double lon, String endpoint, String topic, String apikey) {
+    public SensorPython(double lat, double lon, String endpoint, String topic, String apikey) {
         clientId = StringUtils.getAlphaNumericString(32);
-        this.zone = zone;
         this.lat = String.valueOf(lat);
         this.lon = String.valueOf(lon);
         this.endpoint = endpoint;
