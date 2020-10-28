@@ -27,7 +27,9 @@ public class TestSensors {
                         System.out.println(randomLocation);
                         SensorPython sensor = new SensorPython("Rome", randomLocation.getLatitude(),
                                 randomLocation.getLongitude(), "35.158.147.153", "weather/Rome", OPENWEATHER_API_KEY);
-                        sensor.init();
+                                //randomLocation.getLongitude(), "broker.emqx.io", "weather/Rome", OPENWEATHER_API_KEY);
+                                //randomLocation.getLongitude(), "localhost", "weather/Rome", OPENWEATHER_API_KEY);
+                                sensor.init();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

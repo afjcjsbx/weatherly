@@ -20,6 +20,7 @@ import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
 
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -34,9 +35,12 @@ import java.security.KeyStore;
 import java.security.Security;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.util.Random;
 
 
 public class SensorPython {
+    private static final float MIN_TEMPERATURE_IN_KELVIN = 276.15f;
+    private static final float MAX_TEMPERATURE_IN_KELVIN = 293.15f;
 
     private static final String EMQ_USERNAME = "afjcjsbx";
     private static final String EMQ_PASSWORD = "qwerty";
@@ -171,7 +175,7 @@ public class SensorPython {
         while (true) {
             try {
 
-                MqttClient client = new MqttClient("tcp://"+endpoint + ":" + NEW_PORT, clientId);
+                MqttClient client = new MqttClient("tcp://"+endpoint + ":" + NEW_PORT, clientId,  new MqttDefaultFilePersistence("/tmp"));
                 MqttConnectOptions connOpts = new MqttConnectOptions();
                 connOpts.setCleanSession(true);
                 connOpts.setUserName(EMQ_USERNAME);
@@ -191,10 +195,14 @@ public class SensorPython {
                 while (true) {
 
                     try {
-                        String message = sendGet();
+
+                        float temperature = generateRandomTemperature(MIN_TEMPERATURE_IN_KELVIN, MAX_TEMPERATURE_IN_KELVIN);
+                        String message = "{\"coord\":{\"lon\":12.38,\"lat\":41.76},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":" + temperature + ",\"feels_like\":287.16,\"temp_min\":292.04,\"temp_max\":292.59,\"pressure\":1017,\"humidity\":55},\"visibility\":10000,\"wind\":{\"speed\":7.2,\"deg\":290},\"clouds\":{\"all\":0},\"dt\":1603897442,\"sys\":{\"type\":1,\"id\":6795,\"country\":\"IT\",\"sunrise\":1603863482,\"sunset\":1603901414},\"timezone\":3600,\"id\":6698334,\"name\":\"Vitinia\",\"cod\":200}";
+                        //String message = sendGet();
                         /**
                          * Read JSON from a file into a Map
                          */
+                        System.out.println("message: " +message);
 
                         Gson gson = new Gson();
                         WeatherObject event = gson.fromJson(message, WeatherObject.class);
@@ -215,7 +223,7 @@ public class SensorPython {
                                 .lon(event.getCoord().getLon())
                                 .build();
 
-                        System.out.println("Publishing message: " + weather);
+                        System.out.println("Publishing message: " + new Gson().toJson(weather));
                         MqttMessage mqttMessage = new MqttMessage(new Gson().toJson(weather).getBytes());
                         mqttMessage.setQos(qos);
 
@@ -258,10 +266,15 @@ public class SensorPython {
             HttpEntity entity = response.getEntity();
             // return it as a String
             String result = EntityUtils.toString(entity);
-            System.out.println(result);
+            //System.out.println(result);
             return result;
         }
 
+    }
+
+
+    private float generateRandomTemperature(float min, float max){
+        return (float) Math.random() * (max - min + 1) + min;
     }
 
 }
