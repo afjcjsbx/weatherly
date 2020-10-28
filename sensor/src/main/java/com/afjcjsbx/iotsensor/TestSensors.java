@@ -15,7 +15,7 @@ public class TestSensors {
         double LONGITUDE_ROME = 12.49636;
         double RADIUS_IN_METERS = 30000;
 
-        int num = 500;
+        int num = 1;
         for(int i = 0; i < num; i++ ){
 
             Thread thread = new Thread("New Thread") {

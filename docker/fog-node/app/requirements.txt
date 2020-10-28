@@ -1,0 +1,11 @@
+requests
+configparser
+flask
+paho-mqtt
+influxdb
+datetime
+numpy==1.18.5
+pandas
+scikit-learn
+keras
+tensorflow

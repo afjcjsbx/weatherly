@@ -1,4 +1,4 @@
-
+import os
 import random
 import json
 import threading, time
@@ -7,27 +7,24 @@ from influxdb import InfluxDBClient
 from ml import MachineLearning
 from datetime import datetime
 
-EMQ_USERNAME = 'afjcjsbx'
-EMQ_PASSWORD = 'qwerty'
+broker_address = 'localhost'
+broker_port = 1883
+broker_username = 'admin'
+broker_password = 'admin'
 
-INFLUXDB_HOST = '52.44.221.201'
-#INFLUXDB_HOST = 'localhost'
+influx_db_host = '52.44.221.201'
+influx_db_port = 8086
+influx_db_username = 'admin'
+influx_db_password = 'admin'
+influx_db_database = 'home'
 
-city = "Rome"
-#city = os.getenv('CITY', 'Rome')
-
-# broker mqtt endpoint
-#broker = 'broker.emqx.io'
-broker = '35.158.147.153'
-port = 1883
+city = "default"
 topic = "weather/" + city
 # generate client ID with pub prefix randomly
-client_id = f'python-mqtt-{random.randint(0, 100)}'
-client_influx = InfluxDBClient(INFLUXDB_HOST, 8086, 'afjcjsbx', 'admin', 'home')
-
+client_id = 'python-mqtt-fog-node-' + city
+client_influx = InfluxDBClient(influx_db_host, influx_db_port, influx_db_username, influx_db_password, influx_db_database)
 
 dataset = []
-
 
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
@@ -38,8 +35,8 @@ def connect_mqtt() -> mqtt_client:
 
     client = mqtt_client.Client(client_id)
     client.on_connect = on_connect
-    client.username_pw_set(EMQ_USERNAME, EMQ_PASSWORD)
-    client.connect(broker, port)
+    client.username_pw_set(broker_username, broker_password)
+    client.connect(broker_address, broker_port)
     return client
 
 
@@ -76,14 +73,27 @@ def subscribe(client: mqtt_client):
 
 def print_every_n_seconds(n=60*1):
     while True:
-        print("entroooo")
-
-        ml = MachineLearning(city)
-        #ml.train(dataset)
-        #dataset.clear()
+        ml = MachineLearning(client_influx, city)
         time.sleep(n)
 
 def run():
+
+    try:
+        city = os.getenv('CITY', 'default')
+    except:
+        print("Env variable CITY doesn't found")
+
+    try:
+        broker_address = os.getenv('BROKER_ADDRESS', 'localhost')
+        broker_port = os.getenv('BROKER_PORT', 1883)
+    except:
+        print("Broker env variables missing")
+
+    try:
+        broker_username = os.getenv('BROKER_USERNAME', 'admin')
+        broker_password = os.getenv('BROKER_PASSWORD', 'admin')
+    except:
+        print("Broker credentials env variables missing")
 
     thread = threading.Thread(target=print_every_n_seconds, daemon=True)
     thread.start()
