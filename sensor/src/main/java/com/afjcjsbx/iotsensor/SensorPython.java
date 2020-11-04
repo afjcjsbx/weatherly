@@ -194,10 +194,10 @@ public class SensorPython {
                 while (true) {
 
                     try {
-
-                        float temperature = generateRandomTemperature(MIN_TEMPERATURE_IN_KELVIN, MAX_TEMPERATURE_IN_KELVIN);
-                        String message = "{\"coord\":{\"lon\":12.38,\"lat\":41.76},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":" + temperature + ",\"feels_like\":287.16,\"temp_min\":292.04,\"temp_max\":292.59,\"pressure\":1017,\"humidity\":55},\"visibility\":10000,\"wind\":{\"speed\":7.2,\"deg\":290},\"clouds\":{\"all\":0},\"dt\":1603897442,\"sys\":{\"type\":1,\"id\":6795,\"country\":\"IT\",\"sunrise\":1603863482,\"sunset\":1603901414},\"timezone\":3600,\"id\":6698334,\"name\":\"Vitinia\",\"cod\":200}";
-                        //String message = sendGet();
+                        // Test
+                        //float temperature = generateRandomTemperature(MIN_TEMPERATURE_IN_KELVIN, MAX_TEMPERATURE_IN_KELVIN);
+                        //String message = "{\"coord\":{\"lon\":12.38,\"lat\":41.76},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":" + temperature + ",\"feels_like\":287.16,\"temp_min\":292.04,\"temp_max\":292.59,\"pressure\":1017,\"humidity\":55},\"visibility\":10000,\"wind\":{\"speed\":7.2,\"deg\":290},\"clouds\":{\"all\":0},\"dt\":1603897442,\"sys\":{\"type\":1,\"id\":6795,\"country\":\"IT\",\"sunrise\":1603863482,\"sunset\":1603901414},\"timezone\":3600,\"id\":6698334,\"name\":\"Vitinia\",\"cod\":200}";
+                        String message = sendGet();
                         /**
                          * Read JSON from a file into a Map
                          */

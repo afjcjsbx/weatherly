@@ -11,7 +11,7 @@ public class TestSensors {
     public static double LATITUDE_ROME = 41.90278;
     public static double LONGITUDE_ROME = 12.49636;
     public static double RADIUS_IN_METERS = 30000;
-    public static String BROKER_ENDPOINT = "35.158.147.153";
+    public static String BROKER_ENDPOINT = "broker.emqx.io";
     public static String TOPIC_NAME = "weather/Rome";
 
     public static void main(String[] args) {

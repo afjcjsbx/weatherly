@@ -6,6 +6,7 @@ from paho.mqtt import client as mqtt_client
 from influxdb import InfluxDBClient
 from ml import MachineLearning
 from datetime import datetime
+from pytz import timezone
 
 broker_address = None
 broker_port = 1883
@@ -59,7 +60,7 @@ def subscribe(client: mqtt_client):
                 "tags": {
                     "type": "measured"
                 },
-                "time": datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'),
+                "time": datetime.now(timezone('Europe/Rome')).strftime('%Y-%m-%dT%H:%M:%SZ'),
                 "fields": {
                     "temperature": float(converted_temp),
                     "city": city
@@ -86,8 +87,7 @@ def run():
     global client_id
     client_id = 'python-mqtt-fog-node-' + city
     global broker_address
-    #broker_address = os.getenv('BROKER_ADDRESS', 'broker.emqx.io')
-    broker_address = os.getenv('BROKER_ADDRESS', '35.158.147.153')
+    broker_address = os.getenv('BROKER_ADDRESS', 'broker.emqx.io')
 
     global broker_port
     broker_port = int(os.environ.get('BROKER_PORT', 1883))
